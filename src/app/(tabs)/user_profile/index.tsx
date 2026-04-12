@@ -1,19 +1,16 @@
 import { View, Pressable } from 'react-native';
-import { Card, Chip, LinkButton, Switch } from 'heroui-native';
-import * as WebBrowser from 'expo-web-browser';
+import { Stack } from 'expo-router';
+import { Card, Switch } from 'heroui-native';
 import Feather from '@expo/vector-icons/Feather';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, { ZoomIn } from 'react-native-reanimated';
 import { AppText } from '../../../components/app-text';
 import { useAppTheme } from '../../../contexts/app-theme-context';
 import { withUniwind } from 'uniwind';
-import { Stack } from 'expo-router';
 import { DevTools } from '@/src/components/dev-tools';
 import { ScreenScrollView } from '@/src/components/screen-scroll-view';
 
 const StyledIonicons = withUniwind(Ionicons);
-
-const HEROUI_COMPONENTS_DOCS_URL = 'https://heroui.com/docs/native/components';
 
 const SETTINGS_OPTIONS = [
     {
@@ -39,20 +36,7 @@ export default function SettingsScreen() {
 
     return (
         <>
-        <Stack.Screen
-            options={{
-                headerLargeTitleEnabled: true,
-                headerTitle: 'Settings',
-                headerTitleStyle: {
-                    
-                },
-                headerTitleAlign: 'center',
-                headerShadowVisible: false,
-                headerBackButtonDisplayMode: 'default',
-                headerTransparent: true,
-                
-            }}
-        />
+        <Stack.Screen options={{ headerTitle: 'Settings', headerLargeTitleEnabled: true, headerShadowVisible: false, headerTransparent: true }} />
         <ScreenScrollView  >
         <View
             className="flex-1 bg-background "
@@ -90,35 +74,6 @@ export default function SettingsScreen() {
                     </View>
                 </Card>
 
-                <Card className="gap-2 border border-border/50 p-4">
-                    <View className="flex-row flex-wrap items-center gap-2">
-                        <AppText className="text-sm text-foreground/70">
-                            Documentation
-                        </AppText>
-                        <Chip
-                            size="sm"
-                            variant="soft"
-                            color="accent"
-                            disabled
-                            className="px-2 py-0.5"
-                        >
-                            Link
-                        </Chip>
-                    </View>
-                    <LinkButton
-                        accessibilityRole="link"
-                        accessibilityLabel="Open HeroUI Native components documentation"
-                        className="self-start"
-                        onPress={() =>
-                            void WebBrowser.openBrowserAsync(
-                                HEROUI_COMPONENTS_DOCS_URL
-                            )
-                        }
-                    >
-                        <LinkButton.Label>HeroUI components</LinkButton.Label>
-                    </LinkButton>
-                </Card>
-
                 {SETTINGS_OPTIONS.map((item, index) => (
                     <Pressable key={index} onPress={item.onPress}>
                         <Card className="p-4 border border-border/50">
@@ -142,10 +97,15 @@ export default function SettingsScreen() {
                 ))}
             </View>
            {__DEV__ && (
-            <View className="mt-4">
-            <AppText>Only visible in development mode</AppText>
-            <DevTools />
-              </View>
+            <View className="mt-6 p-4 rounded-2xl border-2 border-dashed border-red-400/50 bg-red-500/5">
+              <AppText className="text-sm font-bold text-red-500 text-center mb-1">
+                DEV ONLY — Not visible to users
+              </AppText>
+              <AppText className="text-xs text-muted text-center mb-3">
+                These tools are only shown in development builds
+              </AppText>
+              <DevTools />
+            </View>
                 )}
         </View>
          </ScreenScrollView>

@@ -49,15 +49,30 @@ function AppContent() {
   const { onboardingDone } = useOnboarding();
   const pathname = usePathname();
 
+  const renderContent = () => {
+    if (onboardingDone === null) {
+      return null;
+    }
 
-  if (onboardingDone === null) {
-    return null;
-  }
+    if (!onboardingDone && !pathname.startsWith('/onboarding')) {
+      return <Redirect href="/onboarding" />;
+    }
 
-
-  if (!onboardingDone && !pathname.startsWith('/onboarding')) {
-    return <Redirect href="/onboarding" />;
-  }
+    return (
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="(tabs)" />
+        <Stack.Screen name="onboarding" />
+          <Stack.Screen
+            name="paywall"
+            options={{
+              presentation: 'modal',
+              animation: 'slide_from_bottom',
+              headerShown: false,
+            }}
+          />
+        </Stack>
+    );
+  };
 
   return (
     <AppThemeProvider>
@@ -68,18 +83,7 @@ function AppContent() {
           },
         }}
       >
-        <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="(tabs)" />
-          <Stack.Screen name="onboarding" />
-          <Stack.Screen
-            name="paywall"
-            options={{
-              presentation: 'modal',
-              animation: 'slide_from_bottom',
-              headerShown: false,
-            }}
-          />
-        </Stack>
+        {renderContent()}
       </HeroUINativeProvider>
     </AppThemeProvider>
   );

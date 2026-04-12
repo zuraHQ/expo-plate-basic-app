@@ -62,11 +62,11 @@ export default function Layout() {
             selected: themeColorForeground,
           }}
         >
-          <NativeTabs.Trigger name="home/index">
+          <NativeTabs.Trigger name="home">
             <Label>Home</Label>
             <Icon src={<VectorIcon family={Ionicons} name="home" />} />
           </NativeTabs.Trigger>
-          <NativeTabs.Trigger name="user_profile/index">
+          <NativeTabs.Trigger name="user_profile">
             <Label>Settings</Label>
             <Icon src={<VectorIcon family={Ionicons} name="person" />} />
           </NativeTabs.Trigger>

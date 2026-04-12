@@ -26,8 +26,8 @@ export const ScreenScrollView: FC<PropsWithChildren<Props>> = ({
       keyboardShouldPersistTaps="handled"
       className={cn('bg-background', className)}
       contentContainerClassName={cn('px-5', contentContainerClassName)}
+      contentInsetAdjustmentBehavior="automatic"
       contentContainerStyle={{
-        paddingTop,
         paddingBottom: insets.bottom + 32,
       }}
       showsVerticalScrollIndicator={false}
