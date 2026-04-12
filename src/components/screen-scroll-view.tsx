@@ -1,7 +1,7 @@
 import { HeaderHeightContext } from '@react-navigation/elements';
 import { cn } from 'heroui-native';
 import { type FC, type PropsWithChildren, useContext } from 'react';
-import { type ScrollViewProps } from 'react-native';
+import { Platform, type ScrollViewProps } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -28,6 +28,7 @@ export const ScreenScrollView: FC<PropsWithChildren<Props>> = ({
       contentContainerClassName={cn('px-5', contentContainerClassName)}
       contentInsetAdjustmentBehavior="automatic"
       contentContainerStyle={{
+        paddingTop: Platform.OS === 'android' ? paddingTop : undefined,
         paddingBottom: insets.bottom + 32,
       }}
       showsVerticalScrollIndicator={false}

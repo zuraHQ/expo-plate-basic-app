@@ -1,4 +1,4 @@
-import { View, ImageBackground } from 'react-native';
+import { View } from 'react-native';
 import { useNavigation, useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Button, useThemeColor } from 'heroui-native';

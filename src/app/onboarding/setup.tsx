@@ -1,6 +1,5 @@
 import { Card } from 'heroui-native';
 import { View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { AppText } from '../../components/app-text';
 
 export default function SetupScreen() {
