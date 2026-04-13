@@ -33,7 +33,6 @@ export default function OnboardingLayout() {
     return (
         <View className="flex-1 bg-background">
             <StepHeader currentStep={currentStep} totalSteps={TOTAL_STEPS} />
-            
             <View className="flex-1">
                 <Stack
                     screenOptions={{

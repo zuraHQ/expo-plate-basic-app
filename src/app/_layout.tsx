@@ -6,11 +6,8 @@ import {
   useFonts,
 } from '@expo-google-fonts/inter';
 import { Redirect, Stack, usePathname } from 'expo-router';
-import { HeroUINativeProvider } from 'heroui-native';
-import { useCallback } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import {
-  KeyboardAvoidingView,
   KeyboardProvider,
 } from 'react-native-keyboard-controller';
 import {
@@ -29,23 +26,8 @@ configureReanimatedLogger({
 
 /**
  * Component that wraps app content inside KeyboardProvider
- * Contains the contentWrapper and HeroUINativeProvider configuration
  */
 function AppContent() {
-  const contentWrapper = useCallback(
-    (children: React.ReactNode) => (
-      <KeyboardAvoidingView
-        pointerEvents="box-none"
-        behavior="padding"
-        keyboardVerticalOffset={12}
-        className="flex-1"
-      >
-        {children}
-      </KeyboardAvoidingView>
-    ),
-    []
-  );
-
   const { onboardingDone } = useOnboarding();
   const pathname = usePathname();
 
@@ -76,15 +58,7 @@ function AppContent() {
 
   return (
     <AppThemeProvider>
-      <HeroUINativeProvider
-        config={{
-          toast: {
-            contentWrapper,
-          },
-        }}
-      >
-        {renderContent()}
-      </HeroUINativeProvider>
+      {renderContent()}
     </AppThemeProvider>
   );
 }

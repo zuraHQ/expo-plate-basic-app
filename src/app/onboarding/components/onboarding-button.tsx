@@ -1,5 +1,4 @@
-import { Button } from 'heroui-native';
-import { View } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface OnboardingButtonProps {
@@ -15,13 +14,9 @@ export function OnboardingButton({ label, onPress }: OnboardingButtonProps) {
             className="px-6"
             style={{ paddingBottom: insets.bottom, paddingTop: 12 }}
         >
-            <Button
-                variant="primary"
-                size="lg"
-                onPress={onPress}
-            >
-                <Button.Label>{label}</Button.Label>
-            </Button>
+            <Pressable className="rounded-2xl bg-orange-600 py-3 items-center" onPress={onPress}>
+                <Text className="text-white font-semibold text-base">{label}</Text>
+            </Pressable>
         </View>
     );
 }

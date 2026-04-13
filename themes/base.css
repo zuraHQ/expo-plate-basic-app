@@ -1,0 +1,103 @@
+@layer theme {
+  :root {
+    @variant light {
+      --background: #ffffff;
+      --foreground: #171717;
+
+      --surface: #f5f5f5;
+      --surface-foreground: #262626;
+
+      --overlay: #ffffff;
+      --overlay-foreground: #262626;
+
+      --muted: #737373;
+
+      --default: #f5f5f5;
+      --default-foreground: #404040;
+
+      --accent: #ea580c;
+      --accent-foreground: #ffffff;
+
+      --field-background: #f5f5f5;
+      --field-foreground: #171717;
+      --field-placeholder: var(--muted);
+      --field-border: transparent;
+
+      --success: #22c55e;
+      --success-foreground: #ffffff;
+
+      --warning: #eab308;
+      --warning-foreground: #171717;
+
+      --danger: #ef4444;
+      --danger-foreground: #ffffff;
+
+      --segment: #f5f5f5;
+      --segment-foreground: #171717;
+
+      --surface-secondary-foreground: #737373;
+      --surface-tertiary: #fafafa;
+      --surface-tertiary-foreground: #525252;
+
+      --border: #e5e5e5;
+      --divider: #d4d4d4;
+      --separator: #d4d4d4;
+      --link: #ea580c;
+      --focus: #ea580c;
+
+      --surface-shadow: rgba(0,0,0,0.06);
+      --overlay-shadow: rgba(0,0,0,0.12);
+      --field-shadow: rgba(0,0,0,0.04);
+    }
+
+    @variant dark {
+      --background: #0a0a0a;
+      --foreground: #f5f5f5;
+
+      --surface: #171717;
+      --surface-foreground: #e5e5e5;
+
+      --overlay: #262626;
+      --overlay-foreground: #e5e5e5;
+
+      --muted: #a3a3a3;
+
+      --default: #262626;
+      --default-foreground: #d4d4d4;
+
+      --accent: #ea580c;
+      --accent-foreground: #ffffff;
+
+      --field-background: #262626;
+      --field-foreground: #f5f5f5;
+      --field-placeholder: var(--muted);
+      --field-border: transparent;
+
+      --success: #22c55e;
+      --success-foreground: #ffffff;
+
+      --warning: #eab308;
+      --warning-foreground: #0a0a0a;
+
+      --danger: #ef4444;
+      --danger-foreground: #ffffff;
+
+      --segment: #171717;
+      --segment-foreground: #f5f5f5;
+
+      --surface-secondary-foreground: #a3a3a3;
+      --surface-tertiary: #1a1a1a;
+      --surface-tertiary-foreground: #d4d4d4;
+
+      --border: #404040;
+      --divider: #525252;
+      --separator: #404040;
+      --link: #ea580c;
+      --focus: #ea580c;
+
+      --surface-shadow: rgba(0,0,0,0.3);
+      --overlay-shadow: rgba(0,0,0,0.5);
+      --field-shadow: rgba(0,0,0,0.2);
+    }
+  }
+}

@@ -1,16 +1,9 @@
 import { View, Pressable } from 'react-native';
 import { Stack } from 'expo-router';
-import { Card, Switch } from 'heroui-native';
 import Feather from '@expo/vector-icons/Feather';
-import { Ionicons } from '@expo/vector-icons';
-import Animated, { ZoomIn } from 'react-native-reanimated';
 import { AppText } from '../../../components/app-text';
-import { useAppTheme } from '../../../contexts/app-theme-context';
-import { withUniwind } from 'uniwind';
 import { DevTools } from '@/src/components/dev-tools';
 import { ScreenScrollView } from '@/src/components/screen-scroll-view';
-
-const StyledIonicons = withUniwind(Ionicons);
 
 const SETTINGS_OPTIONS = [
     {
@@ -32,69 +25,36 @@ const SETTINGS_OPTIONS = [
 ];
 
 export default function SettingsScreen() {
-    const { toggleTheme, isDark } = useAppTheme();
-
     return (
         <>
         <Stack.Screen options={{ headerTitle: 'Settings', headerLargeTitleEnabled: true, headerShadowVisible: false, headerTransparent: true }} />
-        <ScreenScrollView  >
-        <View
-            className="flex-1 bg-background "
-        >
-            <View className="mt-2 gap-3">
-                <Card className="p-4 border border-border/50">
-                    <View className="flex-row items-center justify-between">
-                        <View className="flex-row items-center gap-3">
-                            <Feather name="moon" size={20} color="#888" />
-                            <AppText className="font-medium text-foreground">
-                                Dark Mode
-                            </AppText>
-                        </View>
-                        <Switch
-                            isSelected={isDark}
-                            onSelectedChange={toggleTheme}
-                            className="w-[50px] h-[28px]"
-                        >
-                            <Switch.Thumb className="size-[22px]" />
-                            <Switch.StartContent className="left-1.5">
-                                {isDark && (
-                                    <Animated.View key="moon" entering={ZoomIn}>
-                                        <StyledIonicons name="moon" size={14} className="text-blue-200" />
-                                    </Animated.View>
-                                )}
-                            </Switch.StartContent>
-                            <Switch.EndContent className="right-1.5">
-                                {!isDark && (
-                                    <Animated.View key="sun" entering={ZoomIn}>
-                                        <StyledIonicons name="sunny" size={14} className="text-yellow-500" />
-                                    </Animated.View>
-                                )}
-                            </Switch.EndContent>
-                        </Switch>
-                    </View>
-                </Card>
-
-                {SETTINGS_OPTIONS.map((item, index) => (
-                    <Pressable key={index} onPress={item.onPress}>
-                        <Card className="p-4 border border-border/50">
-                            <View className="flex-row items-center justify-between">
+        <ScreenScrollView>
+        <View className="flex-1 bg-background">
+            <View className="mt-2">
+                <View className="rounded-2xl bg-neutral-100 overflow-hidden">
+                    {SETTINGS_OPTIONS.map((item, index) => (
+                        <Pressable key={index} onPress={item.onPress} className="active:opacity-60">
+                            <View className="px-4 py-3.5 flex-row items-center justify-between">
                                 <View className="flex-row items-center gap-3">
                                     <Feather
                                         name={item.icon}
-                                        size={20}
+                                        size={18}
                                         color={item.danger ? '#ef4444' : '#888'}
                                     />
                                     <AppText
-                                        className={`font-medium ${item.danger ? 'text-red-500' : 'text-foreground'}`}
+                                        className={`text-base ${item.danger ? 'text-red-500' : 'text-foreground'}`}
                                     >
                                         {item.label}
                                     </AppText>
                                 </View>
-                                <Feather name="chevron-right" size={20} color="#888" />
+                                <Feather name="chevron-right" size={18} color="#ccc" />
                             </View>
-                        </Card>
-                    </Pressable>
-                ))}
+                            {index < SETTINGS_OPTIONS.length - 1 && (
+                                <View className="h-px bg-neutral-200 mx-4" />
+                            )}
+                        </Pressable>
+                    ))}
+                </View>
             </View>
            {__DEV__ && (
             <View className="mt-6 p-4 rounded-2xl border-2 border-dashed border-red-400/50 bg-red-500/5">

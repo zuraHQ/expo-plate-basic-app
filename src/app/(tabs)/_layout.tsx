@@ -6,10 +6,9 @@ import {
   NativeTabs,
   VectorIcon,
 } from 'expo-router/unstable-native-tabs';
-import { useThemeColor, useToast } from 'heroui-native';
-import { useEffect, useState } from 'react';
+import { useCSSVariable } from 'uniwind';
+import { useState } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
-import { useReducedMotion } from 'react-native-reanimated';
 import LogoDark from '../../../assets/logo-dark.png';
 import LogoLight from '../../../assets/logo-light.png';
 import { useAppTheme } from '../../contexts/app-theme-context';
@@ -19,28 +18,11 @@ export default function Layout() {
 
   // false for basic tabs, true for native tabs
   const [showNativeTabs] = useState(true)
-  
-  const [themeColorForeground, themeColorBackground] = useThemeColor([
-    'foreground',
-    'background',
-  ]);
 
-  const reducedMotion = useReducedMotion();
-  const { toast } = useToast();
-
-  useEffect(() => {
-    if (reducedMotion) {
-      toast.show({
-        duration: 'persistent',
-        variant: 'warning',
-        label: 'Reduce motion enabled',
-        description: 'All animations will be disabled',
-        actionLabel: 'Close',
-        onActionPress: ({ hide }) => hide(),
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reducedMotion]);
+  const [themeColorForeground, themeColorBackground] = useCSSVariable([
+    '--color-foreground',
+    '--color-background',
+  ]) as [string, string];
 
   const _renderTitle = () => {
     return (

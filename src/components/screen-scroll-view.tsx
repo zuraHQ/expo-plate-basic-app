@@ -1,5 +1,4 @@
 import { HeaderHeightContext } from '@react-navigation/elements';
-import { cn } from 'heroui-native';
 import { type FC, type PropsWithChildren, useContext } from 'react';
 import { Platform, type ScrollViewProps } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
@@ -24,8 +23,8 @@ export const ScreenScrollView: FC<PropsWithChildren<Props>> = ({
     <KeyboardAwareScrollView
       bottomOffset={50}
       keyboardShouldPersistTaps="handled"
-      className={cn('bg-background', className)}
-      contentContainerClassName={cn('px-5', contentContainerClassName)}
+      className={`bg-background ${className ?? ''}`}
+      contentContainerClassName={`px-5 ${contentContainerClassName ?? ''}`}
       contentInsetAdjustmentBehavior="automatic"
       contentContainerStyle={{
         paddingTop: Platform.OS === 'android' ? paddingTop : undefined,
